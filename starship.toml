@@ -121,7 +121,7 @@ show_always = true
 
 [hostname]
 ssh_only = false
-format = '[$hostname](bold blue) '
+format = '[$hostname](bold cyan) '
 disabled = false
 
 [directory]
