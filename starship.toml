@@ -140,6 +140,9 @@ repo_root_style = 'green'
 read_only = ' --> readonly'
 read_only_style = 'bold red'
 
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
 [git_status]
 format = '[$all_status$ahead_behind](purple)'
 staged = 'stg\([$count](blue)\) '
@@ -156,7 +159,7 @@ diverged = 'ups\([⇕](blue)\) '
 
 [hostname]
 ssh_only = false
-format = ' on [$hostname](bold blue)'
+format = ' [$hostname](bold blue)'
 disabled = false
 
 [os]
@@ -208,7 +211,7 @@ Unknown = "unk "
 Windows = "win "
 
 [aws]
-format = 'on [$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
+format = '[$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
 symbol = "aws"
 expiration_symbol = "cred expired"
 
