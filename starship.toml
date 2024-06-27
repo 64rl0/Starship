@@ -6,8 +6,8 @@ $shell\
 $jobs\
 $username\
 $sudo\
-$os\
 $hostname\
+$os\
 $localip\
 $singularity\
 $kubernetes\
@@ -131,11 +131,6 @@ symbol = "sudo"
 disabled = false
 style = 'red'
 
-[hostname]
-ssh_only = false
-format = '[\(](bold blue)[$hostname](cyan)[\)](bold blue) '
-disabled = false
-
 [directory]
 truncation_length = 100
 truncate_to_repo = false
@@ -159,10 +154,15 @@ ahead = 'ups\([⇡](blue)\) '
 behind = 'ups\([⇣](blue)\) '
 diverged = 'ups\([⇕](blue)\) '
 
-[os]
-format = ' on [$symbol]($style)'
+[hostname]
+ssh_only = false
+format = ' on [$hostname](bold blue)'
 disabled = false
-style = 'bold blue'
+
+[os]
+format = '[\(](bold blue)[$symbol]($style)[\)](bold blue) '
+disabled = false
+style = 'cyan'
 
 [os.symbols]
 Alpaquita = "alq"
@@ -184,7 +184,7 @@ HardenedBSD = "hbsd"
 Illumos = "lum"
 Linux = "lnx"
 Mabox = "mbox"
-Macos = "mac"
+Macos = "macos"
 Manjaro = "mjo"
 Mariner = "mrn"
 MidnightBSD = "mid"
