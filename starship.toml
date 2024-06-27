@@ -3,6 +3,7 @@
 format = """
 $time\
 $shell\
+$jobs\
 $username\
 $sudo\
 $os\
@@ -78,7 +79,6 @@ $crystal\
 $custom\
 $cmd_duration\
 $line_break\
-$jobs\
 $battery\
 $status\
 $container\
@@ -95,6 +95,12 @@ error_symbol = '[❯](bold red)'
 
 [shell]
 disabled = false
+
+[jobs]
+format = '[$symbol\([$number](yellow)\)]($style) '
+number_threshold = 1
+symbol = "jbs"
+style = "white"
 
 [shlvl]
 disabled = false
@@ -115,20 +121,27 @@ style = 'green'
 [username]
 style_user = 'yellow bold'
 style_root = 'red bold'
-format = '[$user]($style) '
+format = '[$user]($style)'
 disabled = false
 show_always = true
 
+[sudo]
+format = '[\(](bold yellow)[$symbol]($style)[\)](bold yellow)'
+symbol = "sudo"
+disabled = false
+style = 'red'
+
 [hostname]
 ssh_only = false
-format = '[$hostname](bold blue) '
+format = '[\(](bold blue)[$hostname](cyan)[\)](bold blue) '
 disabled = false
 
 [directory]
 truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = '…/'
-repo_root_style = 'bold green'
+style = 'cyan'
+repo_root_style = 'green'
 read_only = ' --> readonly'
 read_only_style = 'bold red'
 
@@ -141,65 +154,63 @@ renamed = 'ren\([$count](blue)\) '
 conflicted = 'cnf\([$count](blue)\) '
 deleted = 'del\([$count](blue)\) '
 stashed = 'sts\([$count](blue)\) '
-up_to_date = 'ups\((blue)[✔](blue)\) '
-ahead = 'ups\((blue)[⇡](blue)\) '
-behind = 'ups\((blue)[⇣](blue)\) '
-diverged = 'ups\((blue)[⇕](blue)\) '
-
-[sudo]
-symbol = "sudo "
-disabled = false
-style = 'bold red'
+up_to_date = 'ups\([✔](blue)\) '
+ahead = 'ups\([⇡](blue)\) '
+behind = 'ups\([⇣](blue)\) '
+diverged = 'ups\([⇕](blue)\) '
 
 [os]
+format = ' on [$symbol]($style)'
 disabled = false
 style = 'bold blue'
 
 [os.symbols]
-Alpaquita = "alq "
-Alpine = "alp "
-Amazon = "amz "
-Android = "andr "
-Arch = "rch "
-Artix = "atx "
-CentOS = "cent "
-Debian = "deb "
-DragonFly = "dfbsd "
-Emscripten = "emsc "
-EndeavourOS = "ndev "
-Fedora = "fed "
-FreeBSD = "fbsd "
-Garuda = "garu "
-Gentoo = "gent "
-HardenedBSD = "hbsd "
-Illumos = "lum "
-Linux = "lnx "
-Mabox = "mbox "
-Macos = "mac "
-Manjaro = "mjo "
-Mariner = "mrn "
-MidnightBSD = "mid "
-Mint = "mint "
-NetBSD = "nbsd "
-NixOS = "nix "
-OpenBSD = "obsd "
-OpenCloudOS = "ocos "
-openEuler = "oeul "
-openSUSE = "osuse "
-OracleLinux = "orac "
-Pop = "pop "
-Raspbian = "rasp "
-Redhat = "rhl "
-RedHatEnterprise = "rhel "
-Redox = "redox "
-Solus = "sol "
-SUSE = "suse "
+Alpaquita = "alq"
+Alpine = "alp"
+Amazon = "amz"
+Android = "andr"
+Arch = "rch"
+Artix = "atx"
+CentOS = "cent"
+Debian = "deb"
+DragonFly = "dfbsd"
+Emscripten = "emsc"
+EndeavourOS = "ndev"
+Fedora = "fed"
+FreeBSD = "fbsd"
+Garuda = "garu"
+Gentoo = "gent"
+HardenedBSD = "hbsd"
+Illumos = "lum"
+Linux = "lnx"
+Mabox = "mbox"
+Macos = "mac"
+Manjaro = "mjo"
+Mariner = "mrn"
+MidnightBSD = "mid"
+Mint = "mint"
+NetBSD = "nbsd"
+NixOS = "nix"
+OpenBSD = "obsd"
+OpenCloudOS = "ocos"
+openEuler = "oeul"
+openSUSE = "osuse"
+OracleLinux = "orac"
+Pop = "pop"
+Raspbian = "rasp"
+Redhat = "rhl"
+RedHatEnterprise = "rhel"
+Redox = "redox"
+Solus = "sol"
+SUSE = "suse"
 Ubuntu = "ubnt "
 Unknown = "unk "
 Windows = "win "
 
 [aws]
-symbol = "aws "
+format = 'on [$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
+symbol = "aws"
+expiration_symbol = "cred expired"
 
 [azure]
 symbol = "az "
