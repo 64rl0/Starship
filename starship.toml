@@ -1,4 +1,9 @@
-# ~/.config/starship.toml
+# starship.toml
+
+#   __|    \    _ \  |      _ \   __| __ __| __ __|
+#  (      _ \     /  |     (   | (_ |    |      |
+# \___| _/  _\ _|_\ ____| \___/ \___|   _|     _|
+
 
 format = """
 $time\
@@ -358,4 +363,3 @@ symbol = "terraform "
 
 [zig]
 symbol = "zig "
-
