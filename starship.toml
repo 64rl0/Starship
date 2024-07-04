@@ -141,12 +141,13 @@ disabled = false
 style = 'red'
 
 [directory]
+format = '[$path]($style)[$read_only]($read_only_style) '
 truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = '…/'
 style = 'cyan'
 repo_root_style = 'green'
-read_only = ' --> readonly'
+read_only = ' [READ]'
 read_only_style = 'bold red'
 
 [git_branch]
