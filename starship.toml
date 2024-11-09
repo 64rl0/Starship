@@ -23,6 +23,7 @@ $singularity\
 $kubernetes\
 $vcsh\
 $fossil_branch\
+$fossil_metrics\
 $git_branch\
 $git_commit\
 $git_state\
@@ -43,6 +44,7 @@ $elixir\
 $elm\
 $erlang\
 $fennel\
+$gleam\
 $golang\
 $guix_shell\
 $haskell\
@@ -62,6 +64,7 @@ $php\
 $pulumi\
 $purescript\
 $python\
+$quarto\
 $raku\
 $rlang\
 $red\
@@ -71,6 +74,7 @@ $scala\
 $solidity\
 $swift\
 $terraform\
+$typst\
 $vlang\
 $vagrant\
 $zig\
@@ -84,14 +88,19 @@ $aws\
 $gcloud\
 $openstack\
 $azure\
+$nats\
+$direnv\
 $env_var\
 $crystal\
-$cmd_duration\
-$line_break\
 $battery\
 $status\
 $container\
-$directory
+$cmd_duration\
+
+$line_break\
+$directory\
+
+$line_break\
 $shlvl\
 $character"""
 
@@ -119,6 +128,12 @@ repeat = true
 symbol = '❯'
 repeat_offset = 1
 threshold = 0
+
+[cmd_duration]
+format = '\[[$duration]($style)\]'
+style = 'white'
+min_time = 0
+show_milliseconds = true
 
 [time]
 disabled = false
@@ -231,7 +246,7 @@ Unknown = "unk "
 Windows = "win "
 
 [aws]
-format = '[$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
+format = '[[via ](white)$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
 symbol = "aws"
 expiration_symbol = "cred expired"
 
