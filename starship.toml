@@ -190,12 +190,12 @@ disabled = true
 [custom.hostname-base]
 command = 'hostname'
 format = ' [$output](bold blue)'
-when = '[[ ! $(hostname) == *"dev-dsk"* ]]'
+when = '[[ ! $(hostname) == *"dev-dsk"* && ! $(hostname) == *"compute.internal"* ]]'
 
 [custom.hostname-devdsk]
 command = 'hostname'
 format = ' [$output](bold purple)'
-when = '[[ $(hostname) == *"dev-dsk"* ]]'
+when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
 
 [os]
 format = '[\(](bold blue)[$symbol]($style)[\)](bold blue) '
