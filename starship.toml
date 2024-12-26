@@ -15,7 +15,7 @@
 # ----------------
 # Set user-defined palette
 # Palettes must be defined AFTER this line
-palette = "catppuccin_mocha"
+# palette = "catppuccin_mocha"
 
 # Palette definitions
 [palettes.catppuccin_latte]
