@@ -13,7 +13,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Set user-defined palette
-palette = "catppuccin_mocha"
+palette = 'catppuccin_mocha'
 
 # Use custom format
 format = """
@@ -22,7 +22,6 @@ $shell\
 $jobs\
 $username\
 $sudo\
-$custom\
 $hostname\
 $os\
 $localip\
@@ -105,49 +104,51 @@ $container\
 $cmd_duration\
 
 $line_break\
+${custom.devdsk}\
 $directory\
 
 $line_break\
 $shlvl\
 $character"""
 
+
+# --------------
+# Prompt Modules
+# --------------
 [line_break]
 disabled = false
 
 [character]
 success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[❮](bold subtext1)'
 
 [shell]
 disabled = false
 
 [jobs]
-format = '[$symbol\([$number](yellow)\)]($style) '
+format = '[$symbol\([$number](peach)\)](white) '
 number_threshold = 1
 symbol = "jbs"
-style = "white"
 
 [shlvl]
 disabled = false
-format = '[$shlvl$symbol]($style)'
-style = 'bold green'
+format = '[$shlvl$symbol](bold green)'
 repeat = true
 symbol = '❯'
 repeat_offset = 1
 threshold = 0
 
 [cmd_duration]
-format = '\[[$duration]($style)\]'
-style = 'white'
+format = '\[[$duration](white)\]'
 min_time = 0
 show_milliseconds = true
 
 [time]
 disabled = false
-format = '[$time]($style) '
+format = '[$time](mauve) '
 use_12hr = true
 utc_time_offset = 'local'
-style = 'green'
 
 [username]
 style_user = 'yellow bold'
@@ -157,26 +158,25 @@ disabled = false
 show_always = true
 
 [sudo]
-format = '[\(](bold yellow)[$symbol]($style)[\)](bold yellow)'
+format = '[\(](bold yellow)[$symbol](red)[\)](bold yellow)'
 symbol = "sudo"
 disabled = false
-style = 'red'
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style) '
 truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = '…/'
-style = 'cyan'
-repo_root_style = 'green'
 read_only = ' [READ]'
+style = 'sky'
+repo_root_style = 'lavender'
 read_only_style = 'bold red'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style) '
+format = '[$symbol$branch(:$remote_branch)](pink) '
 
 [git_status]
-format = '[$all_status$ahead_behind](purple)'
+format = '[$all_status$ahead_behind](pink)'
 staged = 'stg\([$count](blue)\) '
 untracked = 'unt\([$count](blue)\) '
 modified = 'mod\([$count](blue)\) '
@@ -192,22 +192,11 @@ diverged = 'ups\([⇕](blue)\) '
 [hostname]
 ssh_only = false
 format = ' [$hostname](bold blue)'
-disabled = true
-
-[custom.hostname-base]
-command = 'hostname'
-format = ' [$output](bold blue)'
-when = '[[ ! $(hostname) == *"dev-dsk"* && ! $(hostname) == *"compute.internal"* ]]'
-
-[custom.hostname-devdsk]
-command = 'hostname'
-format = ' [$output](bold purple)'
-when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
+disabled = false
 
 [os]
-format = '[\(](bold blue)[$symbol]($style)[\)](bold blue) '
+format = '[\(](bold blue)[$symbol](sky)[\)](bold blue) '
 disabled = false
-style = 'cyan'
 
 [os.symbols]
 Alpaquita = "alq"
@@ -253,7 +242,7 @@ Unknown = "unk "
 Windows = "win "
 
 [aws]
-format = '[[via ](white)$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )]($style)'
+format = '[[via ](white)$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )](bold yellow)'
 symbol = "aws"
 expiration_symbol = "cred expired"
 
@@ -401,6 +390,34 @@ symbol = "terraform "
 [zig]
 symbol = "zig "
 
+
+# ----------------
+# Custom Modules
+# ----------------
+[custom.hostname-base]
+command = 'hostname'
+format = ' [$output](bold blue)'
+when = '[[ ! $(hostname) == *"dev-dsk"* && ! $(hostname) == *"compute.internal"* ]]'
+
+[custom.hostname-devdsk]
+command = 'hostname'
+format = ' [$output](bold maroon)'
+when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
+
+[custom.os-base]
+command = 'starship module os'
+format = '[\(](bold blue)[$output](sky)[\)](bold blue) '
+when = '[[ ! $(hostname) == *"dev-dsk"* && ! $(hostname) == *"compute.internal"* ]]'
+
+[custom.os-devdsk]
+command = 'starship module os'
+format = '[\(](bold maroon)[$output](peach)[\)](bold maroon) '
+when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
+
+[custom.devdsk]
+command = 'echo ${DEVDSK_ID}'
+when = '[[ -n ${DEVDSK_ID} ]]'
+format = '[\[](bold peach)[$output](bold peach)[\]](bold peach) '
 
 # ----------------
 # Catppuccin Theme
