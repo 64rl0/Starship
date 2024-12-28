@@ -420,9 +420,9 @@ format = '[\(](bold maroon)[$output](peach)[\)](bold maroon) '
 when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
 
 [custom.devdsk]
-command = 'echo "[${DEVDSK_ID}]"'
+command = 'echo "[${REMOTE_HOST_ID}]"'
 format = '[$output](bold peach) '
-when = '[[ -n ${DEVDSK_ID} ]]'
+when = '[[ -n ${REMOTE_HOST_ID} ]]'
 
 
 # ----------------
