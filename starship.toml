@@ -151,7 +151,7 @@ use_12hr = true
 utc_time_offset = 'local'
 
 [username]
-style_user = 'yellow bold'
+style_user = 'maroon bold'
 style_root = 'red bold'
 format = '[$user]($style)'
 disabled = false
