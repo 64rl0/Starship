@@ -104,7 +104,7 @@ $container\
 $cmd_duration\
 
 $line_break\
-${custom.devdsk}\
+${hostname.remote-host}\
 $directory\
 
 $line_break\
@@ -242,7 +242,7 @@ Unknown = "unk "
 Windows = "win "
 
 [aws]
-format = '[[via ](white)$symbol ([p\(](yellow)[$profile](green)[\)](yellow) )([r\(](yellow)[$region](green)[\)](yellow) )([d\(](yellow)[$duration](green)[\)](yellow) )](bold yellow)'
+format = '[[via ](white)$symbol ([p\(](yellow)[$profile](flamingo)[\)](yellow) )([r\(](yellow)[$region](flamingo)[\)](yellow) )([d\(](yellow)[$duration](flamingo)[\)](yellow) )](bold yellow)'
 symbol = "aws"
 expiration_symbol = "cred expired"
 
@@ -414,10 +414,16 @@ command = 'starship module os'
 format = '[\(](bold maroon)[$output](peach)[\)](bold maroon) '
 when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
 
-[custom.devdsk]
-command = 'echo ${DEVDSK_ID}'
-when = '[[ -n ${DEVDSK_ID} ]]'
-format = '[\[](bold peach)[$output](bold peach)[\]](bold peach) '
+[custom.remote-host]
+command = 'if [[ -n ${DEVDSK_ID} ]]; then; echo [${DEVDSK_ID}] ; elif [[ -n ${SSH_TTY} ]]; then; echo [REMOTE-HOST] ; else; :; fi'
+format = '[$output](bold peach)'
+when = true
+
+[hostname.remote-host]
+ssh_only = true
+format = '\[REMOTE-HOST\](bold peach) '
+disabled = false
+
 
 # ----------------
 # Catppuccin Theme
