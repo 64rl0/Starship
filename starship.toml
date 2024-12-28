@@ -158,7 +158,7 @@ disabled = false
 show_always = true
 
 [sudo]
-format = '[\(](bold yellow)[$symbol](red)[\)](bold yellow)'
+format = '[\(](bold maroon)[$symbol](red)[\)](bold maroon)'
 symbol = "sudo"
 disabled = false
 
