@@ -197,7 +197,7 @@ disabled = false
 [localip]
 ssh_only = true
 format = '[\[REMOTE-HOST\]](bold red) '
-disabled = false
+disabled = true
 
 [os]
 format = '[\(](bold blue)[$symbol](sky)[\)](bold blue) '
@@ -420,9 +420,9 @@ format = '[\(](bold maroon)[$output](peach)[\)](bold maroon) '
 when = '[[ $(hostname) == *"dev-dsk"* || $(hostname) == *"compute.internal"* ]]'
 
 [custom.devdsk]
-command = 'if [[ -n ${DEVDSK_ID} ]]; then; echo [${DEVDSK_ID}] ; fi'
-format = '[$output](bold peach)'
-when = true
+command = 'echo "[${DEVDSK_ID}]"'
+format = '[$output](bold peach) '
+when = '[[ -n ${DEVDSK_ID} ]]'
 
 
 # ----------------
